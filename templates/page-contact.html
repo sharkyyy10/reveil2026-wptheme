@@ -1,0 +1,71 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","backgroundColor":"action-orange","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"5rem","bottom":"8rem"}}}} -->
+<main class="wp-block-group has-action-orange-background-color has-background"
+    style="padding-top:5rem;padding-bottom:8rem">
+
+    <!-- wp:group {"backgroundColor":"clean-white","layout":{"type":"constrained","contentSize":"700px"},"style":{"border":{"color":"var:preset|color|clean-white","width":"2px","style":"solid","radius":"8px"},"spacing":{"padding":{"top":"4rem","bottom":"4rem","left":"2rem","right":"2rem"}}},"className":"contact-card fse-reveal-item"} -->
+    <div class="wp-block-group contact-card fse-reveal-item has-clean-white-background-color has-background"
+        style="border-color:var(--wp--preset--color--clean-white);border-width:2px;border-style:solid;border-radius:8px;padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
+
+        <!-- wp:heading {"textAlign":"center","textColor":"primary-navy"} -->
+        <h1 class="wp-block-heading has-text-align-center has-primary-navy-color has-text-color">Prenons contact pour
+            Clermont</h1>
+        <!-- /wp:heading -->
+
+        <!-- wp:paragraph {"align":"center","textColor":"primary-navy"} -->
+        <p class="has-text-align-center has-primary-navy-color has-text-color">Une question ? Une suggestion ?
+            Écrivez-nous directement via ce formulaire.</p>
+        <!-- /wp:paragraph -->
+
+        <!-- wp:spacer {"height":"3rem"} -->
+        <div style="height:3rem" aria-hidden="true" class="wp-block-spacer"></div>
+        <!-- /wp:spacer -->
+
+        <!-- wp:columns -->
+        <div class="wp-block-columns">
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:html -->
+                <input type="text" placeholder="Nom" class="contact-input" aria-label="Nom" />
+                <!-- /wp:html -->
+            </div>
+            <!-- /wp:column -->
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:html -->
+                <input type="email" placeholder="Adresse E-mail" class="contact-input" aria-label="Adresse E-mail" />
+                <!-- /wp:html -->
+            </div>
+            <!-- /wp:column -->
+        </div>
+        <!-- /wp:columns -->
+
+        <!-- wp:html -->
+        <div style="width: 100%; display: flex; justify-content: center; margin-top: 1.5rem;">
+            <textarea placeholder="Votre Message" class="contact-textarea" aria-label="Votre Message"
+                style="width: 100%; box-sizing: border-box; max-width: 100%; min-height: 150px;"></textarea>
+        </div>
+        <!-- /wp:html -->
+
+        <!-- wp:spacer {"height":"1rem"} -->
+        <div style="height:1rem" aria-hidden="true" class="wp-block-spacer"></div>
+        <!-- /wp:spacer -->
+
+        <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+        <div class="wp-block-buttons">
+            <!-- wp:button {"backgroundColor":"action-orange","textColor":"clean-white","width":100} -->
+            <div class="wp-block-button has-custom-width wp-block-button__width-100"><a
+                    class="wp-block-button__link has-clean-white-color has-action-orange-background-color has-text-color has-background wp-element-button"
+                    style="width:100%; text-align:center;">Envoyer le message</a></div>
+            <!-- /wp:button -->
+        </div>
+        <!-- /wp:buttons -->
+
+    </div>
+    <!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

@@ -1,0 +1,962 @@
+/*
+Theme Name: Reveil 2026
+Theme URI: 
+Author: Reveil Campaign
+Description: A premium, custom Full Site Editing (FSE) WordPress Block Theme for the municipal election campaign in Clermont-Ferrand.
+Version: 2.1.0
+Requires at least: 6.0
+Tested up to: 6.5
+License: GNU General Public License v2 or later
+Text Domain: reveil-2026
+Tags: full-site-editing, custom-colors, custom-typography
+*/
+
+/* Enhanced Global Styles for High-Contrast Modern Aesthetic */
+
+/* Footer Social & Press */
+.footer-icon-link {
+    color: var(--wp--preset--color--clean-white);
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.footer-icon-link:hover {
+    color: var(--wp--preset--color--action-orange);
+    transform: scale(1.1);
+}
+
+/* Contact Page Form UI */
+.contact-card {
+    box-shadow: 0 12px 40px rgba(45, 72, 113, 0.25);
+    max-width: 100% !important;
+}
+
+.contact-input,
+.contact-textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid var(--wp--preset--color--primary-navy);
+    border-radius: 8px;
+    font-family: var(--wp--preset--font-family--inter);
+    color: var(--wp--preset--color--primary-navy);
+    background-color: var(--wp--preset--color--light-neutral);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.contact-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--action-orange);
+    box-shadow: 0 0 0 3px rgba(245, 155, 60, 0.2);
+}
+
+@media (max-width: 768px) {
+    .contact-card {
+        width: 95% !important;
+        padding: 2rem 1.5rem !important;
+        margin: 0 auto;
+    }
+}
+
+/* Header Title Spring Animation */
+@keyframes title-spring {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.wp-block-site-title {
+    animation: title-spring 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    /* Ensures it starts invisible before animation */
+}
+
+/* Buttons */
+.wp-block-button__link {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.wp-block-button__link:hover,
+.wp-block-button__link:focus {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(245, 155, 60, 0.3);
+    /* Subtle orange glow */
+}
+
+/* Cards (Applying to columns to create a card-like layout for pillars and team) */
+.wp-block-column {
+    background-color: var(--wp--preset--color--clean-white);
+    border: 2px solid var(--wp--preset--color--clean-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(45, 72, 113, 0.08);
+    /* Primary Navy shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    padding: 1.5rem;
+}
+
+.wp-block-column:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(45, 72, 113, 0.2);
+}
+
+.wp-block-column,
+.expert-card,
+.news-card {
+    color: var(--wp--preset--color--primary-navy);
+}
+
+.wp-block-column h1,
+.wp-block-column h2,
+.wp-block-column h3,
+.wp-block-column p,
+.expert-card h1,
+.expert-card h2,
+.expert-card h3,
+.expert-card p,
+.news-card h1,
+.news-card h2,
+.news-card h3,
+.news-card p {
+    color: var(--wp--preset--color--primary-navy) !important;
+}
+
+/* Adjust image borders specifically if needed (though handled mainly via theme.json) */
+.wp-block-image img {
+    border: 2px solid var(--wp--preset--color--clean-white);
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+/* --- Layout Wireframe Additions --- */
+
+/* 1. Scrollable Pillars Carousel */
+.scrollable-pillars {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    flex-wrap: nowrap !important;
+    /* Force columns to not wrap on mobile */
+    gap: 1rem;
+    padding-bottom: 1rem;
+    /* Space for scrollbar */
+}
+
+.scrollable-pillars>.wp-block-column {
+    scroll-snap-align: start;
+    min-width: 250px;
+    flex: 0 0 auto !important;
+    /* Prevent shrinking */
+    background-color: var(--wp--preset--color--light-neutral);
+}
+
+/* 3. Experts Grid Custom Borders and Styling */
+.expert-card {
+    background-color: var(--wp--preset--color--clean-white);
+    border: 2px solid var(--wp--preset--color--primary-navy) !important;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.expert-photo img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--wp--preset--color--action-orange);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(245, 155, 60, 0.3);
+}
+
+/* 5. Actualités (News) Post Cards */
+.news-card {
+    background-color: var(--wp--preset--color--clean-white);
+    border: 2px solid var(--wp--preset--color--action-orange);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(45, 72, 113, 0.08);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/* --- Executive Animation Classes (Triggered by animations.js) --- */
+
+/* 1. Page Transition */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.page-loaded {
+    opacity: 1;
+}
+
+body.page-exiting {
+    opacity: 0;
+}
+
+/* 2. Staggered Reveals (Framer Motion emulation) */
+.fse-reveal-item {
+    opacity: 0;
+    transform: translateY(40px);
+    /* Spring-like cubic bezier */
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fse-reveal-item.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fse-reveal-item.fse-fade-only {
+    transform: none !important;
+    transition: opacity 0.4s ease-in-out !important;
+}
+
+/* Glow effect for items on orange backgrounds */
+.has-action-orange-background-color .fse-reveal-item.is-revealed {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.has-action-orange-background-color .wp-block-column.is-revealed,
+.has-action-orange-background-color .wp-block-button.is-revealed a {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* 3. Header Perfect Circular Logo — 3x Oversized Badge */
+.header-custom-logo {
+    position: relative;
+    z-index: 100;
+    margin-top: -0.5rem !important;
+    margin-bottom: -2rem !important;
+    flex-shrink: 0 !important;
+}
+
+.header-custom-logo img {
+    border-radius: 50% !important;
+    border: 3px solid var(--wp--preset--color--clean-white) !important;
+    object-fit: cover !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(245, 155, 60, 0.3) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    background-color: var(--wp--preset--color--primary-navy) !important;
+}
+
+.header-custom-logo img:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(245, 155, 60, 0.5) !important;
+}
+
+.wp-block-site-title {
+    letter-spacing: 0.5px !important;
+}
+
+/* 8. Navigation — Premium Pill Buttons */
+.wp-block-navigation-item .wp-block-navigation-item__content {
+    display: inline-block !important;
+    padding: 0.5rem 1.2rem !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 50px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    color: var(--wp--preset--color--clean-white) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    transition: none !important;
+    position: relative;
+}
+
+.wp-block-navigation-item .wp-block-navigation-item__content:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    color: var(--wp--preset--color--clean-white) !important;
+}
+
+/* 9. Programme Stat Cards — Minimalist Grid */
+.programme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.programme-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    border-left: 4px solid var(--wp--preset--color--action-orange);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.programme-stat {
+    display: block;
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--wp--preset--color--action-orange);
+    margin-bottom: 0.5rem;
+    letter-spacing: -2px;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.programme-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--wp--preset--color--primary-navy);
+    margin: 0.5rem 0;
+}
+
+.programme-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+/* 10. Le Manifeste — Roadmap Timeline Sexy Structure */
+.manifeste-intro-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto 5rem auto;
+    border-top: 5px solid var(--wp--preset--color--action-orange);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.roadmap-timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Central Line */
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    width: 4px;
+    background: rgba(45, 72, 113, 0.1);
+    border-radius: 4px;
+}
+
+.roadmap-item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    clear: both;
+}
+
+.roadmap-item:last-child {
+    margin-bottom: 0;
+}
+
+/* The circular marker on the timeline */
+.roadmap-marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--wp--preset--color--clean-white);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--wp--preset--color--primary-navy);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.8), 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover effects for marker */
+.roadmap-item:hover .roadmap-marker {
+    transform: translateX(-50%) scale(1.15);
+    background: var(--accent-color);
+    color: var(--wp--preset--color--clean-white);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.9), 0 10px 25px rgba(245, 155, 60, 0.4);
+}
+
+/* The card content */
+.roadmap-content {
+    width: 45%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+}
+
+/* Alternating sides */
+.roadmap-item.left .roadmap-content {
+    margin-left: 0;
+}
+
+.roadmap-item.right .roadmap-content {
+    margin-left: 55%;
+}
+
+/* Card hover glow */
+.roadmap-item:hover .roadmap-content {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-color);
+}
+
+.category-header {
+    background: var(--wp--preset--color--primary-navy);
+    padding: 1.5rem 2rem;
+    color: var(--wp--preset--color--clean-white);
+    border-bottom: 4px solid var(--accent-color);
+}
+
+.category-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.category-body {
+    padding: 2rem;
+}
+
+.category-body ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.category-body>ul>li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.category-body>ul>li::before {
+    content: "•";
+    color: var(--wp--preset--color--action-orange);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -4px;
+}
+
+.category-body strong {
+    color: var(--wp--preset--color--primary-navy);
+}
+
+.category-body ul ul {
+    margin-top: 0.8rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(245, 155, 60, 0.3);
+}
+
+.category-body ul ul li {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.6rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.category-body ul ul li::before {
+    content: "-";
+    color: var(--wp--preset--color--action-orange);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Mobile Perfection Overlay */
+@media (max-width: 768px) {
+
+    .programme-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .programme-card {
+        padding: 1.8rem 1.5rem;
+    }
+
+    .programme-stat {
+        font-size: 2.5rem;
+    }
+
+    /* Prevent dark mode overriding Orange / Color Block Logic */
+    body,
+    .has-action-orange-background-color {
+        background-color: var(--wp--preset--color--action-orange) !important;
+    }
+
+    /* Hero Section scaling and centering */
+    .wp-block-heading.has-text-align-center {
+        font-size: 2.5rem !important;
+        text-align: center !important;
+    }
+
+    /* Header Mobile Alignment (Stack title and logo elegantly) */
+    .header-title-group {
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        max-width: 75%;
+        /* Don't hit hamburger */
+        gap: 12px !important;
+    }
+
+    .header-custom-logo {
+        width: 70px !important;
+        margin-top: -0.25rem !important;
+        margin-bottom: -1rem !important;
+    }
+
+    p.has-text-align-center {
+        font-size: 1.1rem !important;
+        text-align: center !important;
+    }
+
+    /* Stacking White Cards safely */
+    .wp-block-column,
+    .news-card,
+    .wp-block-media-text {
+        margin-bottom: 24px !important;
+    }
+
+    /* Navigation Mobile Overhaul (Hamburger Menu forcing via CSS fallback) */
+    .wp-block-navigation__responsive-container {
+        background-color: var(--wp--preset--color--primary-navy) !important;
+        color: var(--wp--preset--color--clean-white) !important;
+    }
+}
+
+/* Funky Animated Quote (Caveat Font) */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+.funky-quote-section {
+    background-color: var(--wp--preset--color--action-orange);
+    color: var(--wp--preset--color--primary-navy);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.funky-quote-text {
+    font-family: 'Caveat', cursive;
+    font-size: 5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    color: var(--wp--preset--color--primary-navy);
+    text-shadow: 2px 4px 0px rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    line-height: 1.2;
+    transform-origin: center;
+    animation: floatFunky 4s ease-in-out infinite;
+}
+
+@keyframes floatFunky {
+    0% {
+        transform: translateY(0px) rotate(-1deg);
+        text-shadow: 2px 4px 0px rgba(255, 255, 255, 0.4);
+    }
+
+    25% {
+        transform: translateY(-8px) rotate(1deg);
+        text-shadow: -2px 6px 0px rgba(255, 255, 255, 0.6);
+    }
+
+    50% {
+        transform: translateY(0px) rotate(-1deg);
+        text-shadow: 2px 4px 0px rgba(255, 255, 255, 0.4);
+    }
+
+    75% {
+        transform: translateY(8px) rotate(1deg);
+        text-shadow: -2px 2px 0px rgba(255, 255, 255, 0.2);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(-1deg);
+        text-shadow: 2px 4px 0px rgba(255, 255, 255, 0.4);
+    }
+}
+
+@media (max-width: 768px) {
+    .funky-quote-section {
+        padding-top: 3rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .funky-quote-text {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+}
+
+/* Simple Sexy Minimalist Projects (Le Projet) */
+.minimal-project-section {
+    background-color: var(--wp--preset--color--clean-white);
+    color: var(--wp--preset--color--primary-navy);
+}
+
+.minimal-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 6rem;
+}
+
+.minimal-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--wp--preset--color--primary-navy);
+    margin-bottom: 2rem;
+}
+
+.minimal-divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--wp--preset--color--action-orange);
+    margin: 0 auto;
+}
+
+.minimal-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.minimal-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(8, 16, 33, 0.1);
+    transition: transform 0.4s ease, padding-left 0.4s ease;
+}
+
+.minimal-item:last-child {
+    border-bottom: none;
+}
+
+.minimal-item:hover {
+    padding-left: 2rem;
+}
+
+.minimal-number {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--wp--preset--color--action-orange);
+    margin-right: 4rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.minimal-text {
+    flex: 1;
+}
+
+.minimal-text h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--wp--preset--color--primary-navy);
+    letter-spacing: -0.5px;
+}
+
+.minimal-text p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #4a5568;
+    max-width: 600px;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Mobile Elegance */
+@media (max-width: 768px) {
+    .minimal-title {
+        font-size: 2.5rem;
+    }
+
+    .minimal-item {
+        flex-direction: column;
+        padding: 3rem 0;
+    }
+
+    .minimal-item:hover {
+        padding-left: 0;
+    }
+
+    .minimal-number {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .minimal-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .minimal-text p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Sexy Hero Mobile Resize */
+    .wp-block-cover__inner-container h1 {
+        font-size: 3rem !important;
+        /* Scale down the 5rem title */
+        letter-spacing: 0px !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .wp-block-cover__inner-container p {
+        font-size: 1.3rem !important;
+        /* Scale down the subtitle */
+    }
+
+    .wp-block-cover__inner-container {
+        padding: 1.5rem !important;
+        width: 90% !important;
+        /* Ensure the glass box doesn't hit screen edges */
+    }
+
+    /* Roadmap Timeline Mobile Overrides */
+    .roadmap-timeline::before {
+        left: 25px;
+        /* Move central line to the left edge */
+    }
+
+    .roadmap-marker {
+        left: 25px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    /* Reset width and margin for items on mobile */
+    .roadmap-content {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-top: 50px;
+        /* Push content down so marker is clear */
+    }
+
+    .roadmap-item.left .roadmap-content,
+    .roadmap-item.right .roadmap-content {
+        margin-left: 0;
+        width: calc(100% - 70px) !important;
+        /* Make room for marker on the left */
+        float: right;
+    }
+
+    .roadmap-item {
+        flex-direction: column;
+        align-items: flex-end;
+        /* Align content to the right of the line */
+    }
+
+    /* Disable hover scaling on mobile to stop glitchy taps */
+    .roadmap-item:hover .roadmap-content {
+        transform: translateY(-2px);
+    }
+
+    .roadmap-item:hover .roadmap-marker {
+        transform: translateX(-50%) scale(1.05);
+    }
+
+    .wp-block-navigation__responsive-container a {
+        color: var(--wp--preset--color--clean-white) !important;
+    }
+
+    /* Mobile Nav Pill Buttons — full width, stacked elegantly */
+    .wp-block-navigation__responsive-container .wp-block-navigation-item .wp-block-navigation-item__content {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 0.8rem 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+        font-size: 1rem !important;
+        border-radius: 50px !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .wp-block-navigation__toggle {
+        color: var(--wp--preset--color--clean-white) !important;
+    }
+
+    .wp-block-navigation-item__content {
+        color: var(--wp--preset--color--clean-white) !important;
+    }
+}
+
+/* 6. Mobile HTML5 Video Hide (Performance Fallback) */
+@media (max-width: 768px) {
+    .hero-video-bg {
+        display: none !important;
+    }
+
+    .wp-block-cover.alignfull {
+        background-image: url('../images/hero-poster.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+}
+
+/* 3. Magnetic Button Default Smoothness */
+.wp-block-button__link {
+    /* Fast snap back when mouse leaves */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease-in-out;
+}
+
+/* 4. Enhanced Scrollable Pillar Glow */
+.scrollable-pillars .wp-block-column {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.scrollable-pillars .wp-block-column:hover,
+.expert-card:hover {
+    border-color: var(--wp--preset--color--action-orange) !important;
+    box-shadow: 0 15px 35px rgba(245, 155, 60, 0.25) !important;
+}
+
+.expert-card:hover .expert-photo img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(245, 155, 60, 0.4);
+}
+
+/* 5. Parallax Image Catch-up */
+.wp-block-image {
+    overflow: hidden;
+    /* Prevent parallax from breaking borders */
+    border-radius: 8px;
+    /* Maintain the 8px UI rule */
+}
+
+.wp-block-image img {
+    will-change: transform;
+    /* Soft transition to smooth out frame drops on scroll */
+    transition: transform 0.1s linear;
+}
+
+/* ==========================================================================
+   6. 3D SNAP CAROUSEL (Le Projet)
+   ========================================================================== */
+
+/* The Slant SVG divider */
+.slant-divider svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 1px;
+    /* Prevent sub-pixel rendering gaps */
+}
+
+/* 3D Container */
+.card-3d-container {
+    perspective: 1000px;
+}
+
+/* Base Card Styling */
+.card-3d {
+    border: 2px solid var(--wp--preset--color--clean-white) !important;
+    border-radius: 8px !important;
+    background-color: var(--wp--preset--color--clean-white) !important;
+    padding: 2rem !important;
+
+    /* 3D Prep */
+    transform-style: preserve-3d;
+    will-change: transform;
+
+    /* Smooth recovery when mouse leaves */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+
+/* Inner elements popping out in 3D */
+.card-3d .wp-block-heading,
+.card-3d p {
+    transform: translateZ(30px);
+    will-change: transform;
+}
+
+/* Stronger Box Shadow on hover for 3D depth */
+.card-3d:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.5) !important;
+    border-color: var(--wp--preset--color--clean-white) !important;
+    /* Keep it white glowing */
+}
+
+/* 7. Footer Display Enforcement */
+footer.wp-block-template-part {
+    background-color: var(--wp--preset--color--primary-navy) !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
