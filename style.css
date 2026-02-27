@@ -3,7 +3,7 @@ Theme Name: Reveil 2026
 Theme URI: 
 Author: Reveil Campaign
 Description: A premium, custom Full Site Editing (FSE) WordPress Block Theme for the municipal election campaign in Clermont-Ferrand.
-Version: 2.1.0
+Version: 4.9.2
 Requires at least: 6.0
 Tested up to: 6.5
 License: GNU General Public License v2 or later
@@ -348,6 +348,41 @@ body.page-exiting {
     line-height: 1.6;
     color: #555;
     margin: 0;
+}
+
+/* 11. Candidates Grid (La Liste) */
+.candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.8rem;
+    color: var(--wp--preset--color--primary-navy);
+    font-size: 0.95rem;
+}
+
+.candidates-grid div {
+    padding: 0.6rem;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.candidates-grid div:first-child {
+    border-left: 3px solid var(--wp--preset--color--action-orange);
+    background: rgba(245, 155, 60, 0.08);
+    font-weight: bold;
+    border-radius: 0 8px 8px 0;
+}
+
+.candidates-grid div:hover {
+    background: rgba(45, 72, 113, 0.03);
+    border-left-color: var(--wp--preset--color--action-orange);
+}
+
+@media (max-width: 480px) {
+    .candidates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        font-size: 0.82rem;
+        gap: 0.5rem;
+    }
 }
 
 /* 10. Le Manifeste — Roadmap Timeline Sexy Structure */
@@ -764,6 +799,364 @@ body.page-exiting {
     }
 }
 
+/* ==========================================================================
+   QUI SOMMES-NOUS? — Premium Manifesto Section
+   ========================================================================== */
+
+.qui-sommes-nous-section {
+    background: #f5f5f5;
+}
+
+/* Header */
+.qsn-header {
+    background: var(--wp--preset--color--primary-navy);
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.qsn-header::before {
+    content: '?';
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.qsn-eyebrow {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--wp--preset--color--action-orange);
+    margin-bottom: 1rem;
+}
+
+.qsn-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.qsn-title-line {
+    width: 80px;
+    height: 5px;
+    background: var(--wp--preset--color--action-orange);
+    margin: 2rem auto 0;
+    border-radius: 3px;
+}
+
+/* Identity Block */
+.qsn-identity {
+    background: var(--wp--preset--color--primary-navy);
+    padding: 0 2rem 4rem;
+}
+
+.qsn-identity-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.qsn-identity-badge {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--wp--preset--color--action-orange);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-3deg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.qsn-badge-year {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+
+.qsn-badge-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+}
+
+.qsn-identity-name {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.qsn-identity-tagline {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Content Area */
+.qsn-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.qsn-main-text {
+    margin-bottom: 4rem;
+}
+
+.qsn-lead {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--wp--preset--color--primary-navy);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.qsn-main-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1.25rem;
+}
+
+.qsn-main-text p:first-child {
+    padding-left: 2rem;
+    border-left: 4px solid var(--wp--preset--color--action-orange);
+}
+
+/* Engagements */
+.qsn-engagements-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--wp--preset--color--primary-navy);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.qsn-engagement-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.qsn-engagement-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--wp--preset--color--action-orange);
+    transition: width 0.4s ease;
+}
+
+.qsn-engagement-card:hover::after {
+    width: 100%;
+}
+
+.qsn-engagement-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.qsn-eng-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.qsn-engagement-card h4 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--wp--preset--color--primary-navy);
+    margin: 0 0 0.75rem;
+}
+
+.qsn-engagement-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+}
+
+/* Alternative Banner */
+.qsn-alternative {
+    background: var(--wp--preset--color--primary-navy);
+    position: relative;
+    overflow: hidden;
+}
+
+.qsn-alternative::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 40px,
+            rgba(255, 255, 255, 0.02) 40px,
+            rgba(255, 255, 255, 0.02) 80px);
+}
+
+.qsn-alternative-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.qsn-alternative h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--wp--preset--color--action-orange);
+    margin: 0 0 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.qsn-alternative p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* CTA */
+.qsn-cta {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.qsn-cta-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--wp--preset--color--primary-navy);
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.qsn-cta p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.qsn-cta-final {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    color: var(--wp--preset--color--primary-navy) !important;
+}
+
+.qsn-cta-highlight {
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
+    color: var(--wp--preset--color--action-orange) !important;
+    margin-top: 1.5rem !important;
+    line-height: 1.4 !important;
+}
+
+.qsn-join-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1.2rem 3rem;
+    background: var(--wp--preset--color--action-orange);
+    color: #fff !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+.qsn-join-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.5);
+    background: var(--wp--preset--color--primary-navy);
+}
+
+/* QSN Mobile */
+@media (max-width: 768px) {
+    .qsn-title {
+        font-size: 2.8rem;
+    }
+
+    .qsn-header::before {
+        font-size: 12rem;
+    }
+
+    .qsn-identity-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .qsn-identity-badge {
+        transform: rotate(0);
+    }
+
+    .qsn-identity-name {
+        font-size: 1.5rem;
+    }
+
+    .qsn-lead {
+        font-size: 1.5rem;
+    }
+
+    .qsn-alternative h3 {
+        font-size: 1.8rem;
+    }
+
+    .qsn-cta-title {
+        font-size: 1.6rem;
+    }
+
+    .qsn-cta-highlight {
+        font-size: 1.2rem !important;
+    }
+}
+
 @media (max-width: 768px) {
 
     /* Sexy Hero Mobile Resize */
@@ -952,6 +1345,175 @@ body.page-exiting {
     /* Keep it white glowing */
 }
 
+/* ==========================================================================
+   7. ANALYSES PAGE — MAGAZINE EDITORIAL STYLE
+   ========================================================================== */
+
+/* Feed Section */
+.analyses-feed-section {
+    background-color: #f5f5f5 !important;
+}
+
+/* Magazine Grid */
+.analyses-magazine-grid .wp-block-post-template {
+    gap: 2.5rem !important;
+}
+
+/* First article: MEGA FEATURE spanning full width */
+.analyses-magazine-grid .wp-block-post:first-child .mag-card {
+    grid-column: 1 / -1;
+}
+
+.analyses-magazine-grid .wp-block-post:first-child .mag-card img {
+    height: 450px !important;
+}
+
+.analyses-magazine-grid .wp-block-post:first-child .mag-card .wp-block-post-title {
+    font-size: 2.2rem !important;
+}
+
+/* Magazine Card — NO borders, NO shadows, pure editorial */
+.mag-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    transition: transform 0.3s ease !important;
+}
+
+.mag-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Image Wrapper — relative positioning for date badge */
+.mag-card-image-wrap {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+}
+
+.mag-card-image-wrap .wp-block-post-featured-image {
+    overflow: hidden !important;
+    border-radius: 12px !important;
+}
+
+.mag-card img {
+    width: 100% !important;
+    height: 280px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.mag-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Date Badge — floating over image, top right */
+.mag-date-badge {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    background: var(--wp--preset--color--clean-white) !important;
+    color: var(--wp--preset--color--primary-navy) !important;
+    padding: 0.4rem 0.8rem !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
+    z-index: 2 !important;
+    line-height: 1.3 !important;
+}
+
+/* Card Body — clean editorial styling */
+.mag-card-body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.mag-card .wp-block-post-title {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    color: var(--wp--preset--color--primary-navy) !important;
+    letter-spacing: -0.5px !important;
+    transition: color 0.3s ease !important;
+}
+
+.mag-card .wp-block-post-title a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.mag-card:hover .wp-block-post-title {
+    color: var(--wp--preset--color--action-orange) !important;
+}
+
+.mag-card .wp-block-post-excerpt {
+    color: #555 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Read More — minimal editorial arrow link */
+.mag-read-more {
+    margin-top: 1rem;
+}
+
+.mag-read-more span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--wp--preset--color--action-orange);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: letter-spacing 0.3s ease, color 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+.mag-card:hover .mag-read-more span {
+    letter-spacing: 0.2em;
+    border-bottom-color: var(--wp--preset--color--action-orange);
+}
+
+/* Responsive: stack to single column on mobile */
+@media (max-width: 768px) {
+    .analyses-magazine-grid .wp-block-post-template {
+        grid-template-columns: 1fr !important;
+    }
+
+    .mag-card img {
+        height: 220px !important;
+    }
+
+    .analyses-magazine-grid .wp-block-post:first-child .mag-card img {
+        height: 280px !important;
+    }
+
+    .analyses-magazine-grid .wp-block-post:first-child .mag-card .wp-block-post-title {
+        font-size: 1.6rem !important;
+    }
+}
+
+/* Pagination styling */
+.analyses-magazine-grid .wp-block-query-pagination {
+    gap: 0.5rem;
+}
+
+.analyses-magazine-grid .wp-block-query-pagination a,
+.analyses-magazine-grid .wp-block-query-pagination span {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.analyses-magazine-grid .wp-block-query-pagination a:hover {
+    background: var(--wp--preset--color--action-orange);
+    color: #fff;
+}
+
 /* 7. Footer Display Enforcement */
 footer.wp-block-template-part {
     background-color: var(--wp--preset--color--primary-navy) !important;
@@ -959,4 +1521,465 @@ footer.wp-block-template-part {
     margin: 0 !important;
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
+}
+
+/* ==========================================================================
+   8. HEADER RESPONSIVENESS PERFECTED
+   ========================================================================== */
+
+/* ===== HEADER: FORCE SINGLE LINE ON ALL SCREENS ===== */
+
+/* Main header container: never wrap */
+header.wp-block-group.alignfull {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    gap: 1rem !important;
+}
+
+/* Logo: keep visible but compact on desktop */
+.header-custom-logo img {
+    width: 90px !important;
+    height: auto !important;
+}
+
+/* Title group: don't grow, don't shrink below content */
+.header-title-group {
+    flex-shrink: 0 !important;
+    gap: 0.75rem !important;
+}
+
+/* Site title: compact */
+.wp-block-site-title {
+    font-size: 1.1rem !important;
+    white-space: nowrap !important;
+}
+
+/* Navigation: take remaining space, never wrap items */
+@media (min-width: 769px) {
+    .wp-block-navigation {
+        flex-shrink: 1 !important;
+        flex-grow: 1 !important;
+    }
+
+    .wp-block-navigation>ul,
+    .wp-block-navigation__container {
+        gap: 0.5rem !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-end !important;
+    }
+
+    .wp-block-navigation-item__content {
+        padding: 0.4rem 0.6rem !important;
+    }
+
+    .wp-block-navigation-item__label {
+        font-size: 0.82rem !important;
+        white-space: nowrap !important;
+        letter-spacing: 0.02em !important;
+    }
+}
+
+/* Medium laptops (1024-1279px): hide site title, keep logo */
+@media (min-width: 769px) and (max-width: 1279px) {
+    .wp-block-site-title {
+        display: none !important;
+    }
+
+    .header-custom-logo img {
+        width: 75px !important;
+    }
+}
+
+/* Ensure mobile header stays pristine */
+@media (max-width: 768px) {
+    .header-custom-logo img {
+        width: 55px !important;
+        margin-top: 0 !important;
+    }
+
+    .wp-block-site-title {
+        font-size: 1.1rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 150px;
+    }
+}
+
+/* ==========================================================================
+   9. COMPREHENSIVE MOBILE RESPONSIVE PASS (≤ 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    /* ── Hero / Heading scaling ── */
+    .wp-block-group.has-primary-navy-background-color h1,
+    .wp-block-group.has-primary-navy-background-color .wp-block-heading {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .wp-block-group.has-primary-navy-background-color p {
+        font-size: 1.1rem !important;
+    }
+
+    /* ── Funky Quote ── */
+    .funky-quote-text {
+        font-size: 2.2rem !important;
+        padding: 0 1rem;
+    }
+
+    /* ── Roadmap Timeline — full stacked, single column ── */
+    .roadmap-timeline::before {
+        left: 24px !important;
+        margin-left: 0 !important;
+    }
+
+    .roadmap-item {
+        flex-direction: column !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .roadmap-marker {
+        left: 24px !important;
+        top: -24px !important;
+        position: relative !important;
+        margin-bottom: 1rem;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.2rem !important;
+    }
+
+    .roadmap-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .roadmap-item.right .roadmap-content {
+        margin-left: 0 !important;
+    }
+
+    .roadmap-item.left .roadmap-content {
+        margin-left: 0 !important;
+    }
+
+    .category-header h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .category-body {
+        padding: 1.2rem !important;
+    }
+
+    .category-body>ul>li {
+        font-size: 0.92rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    /* ── Manifeste intro card ── */
+    .manifeste-intro-card {
+        padding: 1.5rem 1rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* ── QSN Manifesto Section ── */
+    .qsn-header {
+        padding: 3rem 1.2rem 2rem !important;
+    }
+
+    .qsn-header::before {
+        font-size: 10rem !important;
+    }
+
+    .qsn-title {
+        font-size: 2.2rem !important;
+    }
+
+    .qsn-identity {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .qsn-identity-inner {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    .qsn-identity-badge {
+        align-self: flex-start;
+    }
+
+    .qsn-content {
+        flex-direction: column !important;
+        padding: 2rem 1rem !important;
+        gap: 2rem !important;
+    }
+
+    .qsn-main-text,
+    .qsn-engagements {
+        width: 100% !important;
+    }
+
+    .qsn-lead {
+        font-size: 1.3rem !important;
+    }
+
+    .qsn-engagement-card {
+        padding: 1.2rem !important;
+    }
+
+    .qsn-alternative {
+        padding: 2rem 1rem !important;
+    }
+
+    .qsn-alternative-inner h3 {
+        font-size: 1.5rem !important;
+    }
+
+    .qsn-cta {
+        padding: 2.5rem 1.2rem !important;
+    }
+
+    .qsn-cta-title {
+        font-size: 1.6rem !important;
+    }
+
+    .qsn-join-btn {
+        padding: 0.9rem 1.8rem !important;
+        font-size: 1rem !important;
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+        padding: 2rem 1.2rem !important;
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    /* ── Programme Stats Grid ── */
+    .programme-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* ── Footer legal links — keep on one line or wrap cleanly ── */
+    .has-text-align-center[style*="0.8rem"] a,
+    .has-text-align-center[style*="0.8rem"] span {
+        display: inline !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* ── Footer pillars word list ── */
+    .footer-pillars span {
+        font-size: 0.7rem !important;
+    }
+
+    /* ── Analyse magazine grid ── */
+    .mag-card {
+        border-radius: 10px !important;
+    }
+
+    .mag-card img {
+        height: 200px !important;
+    }
+
+    /* ── Alternative / Qui Sommes-Nous page cards ── */
+    .alt-profiles-grid,
+    .profiles-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* ── Mentions / Politique page card ── */
+    .wp-block-group.contact-card {
+        padding: 2rem 1.2rem !important;
+    }
+
+    .wp-block-group.contact-card h1,
+    .wp-block-group.contact-card h2 {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* Very small screens (≤ 480px) */
+@media (max-width: 480px) {
+    .qsn-title {
+        font-size: 1.8rem !important;
+    }
+
+    .funky-quote-text {
+        font-size: 1.8rem !important;
+    }
+
+    .wp-block-group.has-primary-navy-background-color h1 {
+        font-size: 1.6rem !important;
+    }
+
+    .qsn-join-btn {
+        font-size: 0.95rem !important;
+        border-radius: 30px !important;
+    }
+
+    .roadmap-marker {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* 12. Footer Address Styles */
+.footer-address-block a {
+    transition: transform 0.3s ease;
+}
+
+.footer-address-block a:hover {
+    transform: translateY(-3px);
+}
+
+.footer-address-block p {
+    transition: color 0.3s ease;
+}
+
+.footer-address-block a:hover p:first-child {
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    .footer-address-block p {
+        font-size: 0.85rem !important;
+        padding: 0 1rem;
+    }
+}
+
+/* --- Magazine Grid Styles --- */
+.analyses-magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.mag-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.mag-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 25, 80, 0.1);
+}
+
+.mag-card-image-wrap {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: var(--wp--preset--color--primary-navy);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mag-card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.mag-card:hover .mag-card-image-wrap img {
+    transform: scale(1.05);
+}
+
+.mag-category-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    background: rgba(13, 31, 75, 0.9);
+    color: white;
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+}
+
+.mag-card-body {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mag-card-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 0.75rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mag-card-title {
+    font-size: 1.5rem !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+    color: var(--wp--preset--color--primary-navy);
+}
+
+.mag-card-excerpt {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.mag-read-more {
+    margin-top: auto;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--wp--preset--color--primary-navy);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+}
+
+.mag-read-more span {
+    transition: transform 0.3s ease;
+}
+
+.mag-card:hover .mag-read-more span {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .analyses-magazine-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .mag-card-title {
+        font-size: 1.3rem !important;
+    }
 }

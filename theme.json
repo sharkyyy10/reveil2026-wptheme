@@ -80,6 +80,27 @@
       "postTypes": [
         "page"
       ]
+    },
+    {
+      "name": "page-analyses",
+      "title": "Analyses",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "page-mentions-legales",
+      "title": "Mentions Légales",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "page-politique-confidentialite",
+      "title": "Politique de confidentialité",
+      "postTypes": [
+        "page"
+      ]
     }
   ],
   "templateParts": [
