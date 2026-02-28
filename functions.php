@@ -58,6 +58,50 @@ function reveil2026_migration_and_redirects() {
 }
 add_action( 'init', 'reveil2026_migration_and_redirects' );
 
+/**
+ * TEMPLATE OVERRIDE CLEANER — Remove stale FSE database overrides
+ * WordPress FSE saves template edits to the database (wp_template CPT).
+ * When we update theme files, the DB version can be stale and override our new files.
+ * This function removes DB overrides for our key templates so the file always wins.
+ */
+function reveil2026_clear_stale_template_overrides() {
+    $templates_to_clear = [
+        'page-liste',
+        'page-analyses',
+        'page-programme',
+        'page-le-projet',
+        'page-contact',
+    ];
+
+    foreach ( $templates_to_clear as $slug ) {
+        $existing = get_posts([
+            'post_type'   => 'wp_template',
+            'name'        => $slug,
+            'post_status' => 'any',
+            'numberposts' => 1,
+            'tax_query'   => [
+                [
+                    'taxonomy' => 'wp_theme',
+                    'field'    => 'slug',
+                    'terms'    => 'reveil2026',
+                ],
+            ],
+        ]);
+
+        foreach ( $existing as $post ) {
+            wp_delete_post( $post->ID, true );
+        }
+    }
+
+    // Only run once per deploy by setting a transient
+    set_transient( 'reveil2026_templates_cleared', '1', HOUR_IN_SECONDS );
+}
+
+// Run only if not already cleared this hour
+if ( ! get_transient( 'reveil2026_templates_cleared' ) ) {
+    add_action( 'init', 'reveil2026_clear_stale_template_overrides', 5 );
+}
+
 
 /**
  * PER-PAGE SEO MATRIX — Le Réveil Clermontois 2026

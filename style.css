@@ -1,9 +1,10 @@
 /*
-Theme Name: Reveil 2026
-Theme URI: 
-Author: Reveil Campaign
-Description: A premium, custom Full Site Editing (FSE) WordPress Block Theme for the municipal election campaign in Clermont-Ferrand.
-Version: 4.9.2
+Theme Name: Le Réveil Clermontois
+Theme URI: https://lereveilclermontois.fr/
+Author: Le Réveil Clermontois
+Author URI: https://lereveilclermontois.fr/
+Description: Thème premium minimaliste et sexy pour Le Réveil Clermontois 2026.
+Version: 4.9.3
 Requires at least: 6.0
 Tested up to: 6.5
 License: GNU General Public License v2 or later
@@ -1981,5 +1982,117 @@ header.wp-block-group.alignfull {
 
     .mag-card-title {
         font-size: 1.3rem !important;
+    }
+}
+
+/* =========================================================================
+   RICH CANDIDATES GRID (La Liste)
+   ========================================================================= */
+
+.rich-candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.rich-candidate-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.rich-candidate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.rich-candidate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--wp--preset--color--primary-navy) 0%, var(--wp--preset--color--action-orange) 100%);
+    opacity: 0.8;
+}
+
+.cand-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.cand-number {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--wp--preset--color--primary-navy);
+    background: rgba(13, 31, 75, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.cand-age {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--wp--preset--color--action-orange);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.cand-name {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: var(--wp--preset--color--primary-navy);
+    margin: 0 0 0.4rem 0 !important;
+    line-height: 1.2;
+}
+
+.cand-prof {
+    font-size: 0.95rem !important;
+    color: #555;
+    margin: 0 !important;
+    line-height: 1.4;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .rich-candidates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .rich-candidate-card {
+        padding: 1rem;
+    }
+
+    .cand-name {
+        font-size: 1rem !important;
+    }
+
+    .cand-prof {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .rich-candidates-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .rich-candidate-card {
+        padding: 1rem 1rem 1rem 1.2rem;
     }
 }
